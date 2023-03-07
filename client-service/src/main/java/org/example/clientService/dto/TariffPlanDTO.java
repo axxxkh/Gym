@@ -18,5 +18,14 @@ import java.sql.Time;
 public class TariffPlanDTO {
     private String name;
     private Integer price;
-    private Time monthDuration;
+    private Integer durationMonth;
+    private Boolean monday;
+    private Boolean tuesday;
+    private Boolean wednesday;
+    private Boolean thursday;
+    private Boolean friday;
+    private Boolean saturday;
+    private Boolean sunday;
+    private Time startTime;
+    private Time finishTime;
 }

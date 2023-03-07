@@ -21,8 +21,26 @@ public class TariffPlan {
     private String name;
     @Column(name = "price",nullable = false)
     private Integer price;
-    @Column(name = "Month_duration",nullable = false)
-    private Time monthDuration;
+    @Column(name = "Duration_month",nullable = false)
+    private Integer durationMonth;
+    @Column(name = "Monday",nullable = false)
+    private Boolean monday;
+    @Column(name = "Tuesday",nullable = false)
+    private Boolean tuesday;
+    @Column(name = "Wednesday",nullable = false)
+    private Boolean wednesday;
+    @Column(name = "Thursday",nullable = false)
+    private Boolean thursday;
+    @Column(name = "Friday",nullable = false)
+    private Boolean friday;
+    @Column(name = "Saturday",nullable = false)
+    private Boolean saturday;
+    @Column(name = "Sunday",nullable = false)
+    private Boolean sunday;
+    @Column(name = "Start_time",nullable = false)
+    private Time startTime;
+    @Column(name = "Finish_time",nullable = false)
+    private Time finishTime;
 
     @Override
     public String toString() {
