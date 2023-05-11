@@ -4,11 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.clientService.entity.TariffPlan;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Set;
+import java.time.LocalDate;
 
 @Builder
 @Data
@@ -17,7 +14,7 @@ import java.util.Set;
 public class ClientDTO {
     private String phoneNumber;
     private String name;
-    private LocalDateTime birthdate;
-    private String tariffPlan;
-    private Set<AccessLogsDTO> accessLogsSet;
+    private String surname;
+    private LocalDate birthdate;
+    private String additionalInfo;
 }
