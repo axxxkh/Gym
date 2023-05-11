@@ -18,5 +18,5 @@ public class ClientLogsDTO {
     private TariffPlan tariffPlan;
     private Integer payment;
     private LocalDate timeStartTariff;
-    private LocalDate tomeEndTariff;
+    private LocalDate timeEndTariff;
 }

@@ -1,7 +1,7 @@
 package org.example.clientService.controller;
 
 import lombok.AllArgsConstructor;
-import org.apache.catalina.mapper.Mapper;
+import org.modelmapper.ModelMapper;
 import org.example.clientService.dto.ClientDTO;
 import org.example.clientService.exceptions.UserAlreadyExist;
 import org.example.clientService.exceptions.UserNotFound;
@@ -17,14 +17,13 @@ import java.util.List;
 public class AdminController {
 
     private ClientService clientService;
-    private Mapper mapper;
 
     @GetMapping("/client/")
     public ResponseEntity<List<ClientDTO>> getAllClients() {
         return ResponseEntity.ok(clientService.getAll());
     }
 
-    @GetMapping("/client/")
+    @GetMapping("/client2/")
     public ResponseEntity<ClientDTO> getByPhoneNumber (@RequestParam String phoneNumber) {
         return ResponseEntity.ok(clientService.getByPhoneNumber(phoneNumber));
     }
@@ -34,7 +33,7 @@ public class AdminController {
         return ResponseEntity.ok(clientService.addClient(clientDTO));
     }
 
-    @PostMapping("/client/")
+    @PostMapping("/client2/")
     public ResponseEntity<ClientDTO> editClient (@RequestParam String phoneNumber, @RequestBody ClientDTO clientDTO) {
         return ResponseEntity.ok(clientService.editClient(phoneNumber, clientDTO));
     }
