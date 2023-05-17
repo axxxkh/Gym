@@ -20,11 +20,6 @@ public class ClientController {
 
     private ClientService clientService;
 
-    @PostMapping("/add")
-    public ResponseEntity<ClientDTO> addClient(@RequestBody ClientDTO clientDTO) throws UserNotFound, UserAlreadyExist {
-        return ResponseEntity.ok(clientService.addClient(clientDTO));
-    }
-
     @GetMapping("/gett/")
     public ResponseEntity<ClientDTO> getClient() {
         return ResponseEntity.ok(clientService.getByPhoneNumber("1234344343"));

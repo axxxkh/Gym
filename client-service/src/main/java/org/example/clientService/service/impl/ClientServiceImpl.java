@@ -33,53 +33,6 @@ public class ClientServiceImpl implements ClientService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ClientServiceImpl.class);
 
     @Override
-    public List<ClientDTO> getAll() {
-
-        Client clientDB = clientRepository.getReferenceById(2L);
-        List<AccessLogs> accessLogsSet = clientDB.getAccessLogsSet();
-
-        AccessLogs currentAccessSession = accessLogsSet.stream()
-                .filter(session -> session.getTimeEnd() == null)
-                .findFirst()
-                .orElse(new AccessLogs());
-
-        if (currentAccessSession.getTimeStart() == null) {
-            currentAccessSession.setClient(clientDB);
-            currentAccessSession.setTimeStart(LocalDateTime.now())
-            ;
-        } else {
-            currentAccessSession.setTimeEnd(LocalDateTime.now());
-        }
-
-        accessLogsSet.add(currentAccessSession);
-        clientDB.setAccessLogsSet(accessLogsSet);
-        clientRepository.save(clientDB);
-
-        return clientRepository.findAll()
-                .stream()
-                .map(client -> mapper.map(client, ClientDTO.class))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public ClientDTO addClient(ClientDTO clientDTO) throws UserAlreadyExist {
-        String errorMessage;
-        try {
-            getClientFromDB(clientDTO);
-        } catch (UserNotFound ex) {
-            return mapper.map(clientRepository.save(mapper.map(clientDTO, Client.class)), ClientDTO.class);
-        }
-        errorMessage = String.format("User with phone number %s already exist", clientDTO.getPhoneNumber());
-        LOGGER.error(errorMessage);
-        throw new UserAlreadyExist(errorMessage);
-    }
-
-    @Override
-    public ClientDTO editClient(String phoneNumber, ClientDTO clientDTO) {
-        return null;
-    }
-
-    @Override
     public ClientDTO getByPhoneNumber(String phoneNumber) {
         return mapper.map(clientRepository.findByPhoneNumber(phoneNumber).orElseThrow(), ClientDTO.class);
     }

@@ -1,6 +1,7 @@
 package org.example.clientService.controller;
 
 import lombok.AllArgsConstructor;
+import org.example.clientService.service.AdminService;
 import org.modelmapper.ModelMapper;
 import org.example.clientService.dto.ClientDTO;
 import org.example.clientService.exceptions.UserAlreadyExist;
@@ -16,25 +17,25 @@ import java.util.List;
 @RequestMapping("/admin/")
 public class AdminController {
 
-    private ClientService clientService;
+    private AdminService adminService;
 
     @GetMapping("/client/")
     public ResponseEntity<List<ClientDTO>> getAllClients() {
-        return ResponseEntity.ok(clientService.getAll());
+        return ResponseEntity.ok(adminService.getAll());
     }
 
     @GetMapping("/client2/")
     public ResponseEntity<ClientDTO> getByPhoneNumber (@RequestParam String phoneNumber) {
-        return ResponseEntity.ok(clientService.getByPhoneNumber(phoneNumber));
+        return ResponseEntity.ok(adminService.getByPhoneNumber(phoneNumber));
     }
 
     @PostMapping("/client/")
     public ResponseEntity<ClientDTO> addClient (@RequestBody ClientDTO clientDTO) throws UserNotFound, UserAlreadyExist {
-        return ResponseEntity.ok(clientService.addClient(clientDTO));
+        return ResponseEntity.ok(adminService.addClient(clientDTO));
     }
 
-    @PostMapping("/client2/")
+    @PutMapping("/client/")
     public ResponseEntity<ClientDTO> editClient (@RequestParam String phoneNumber, @RequestBody ClientDTO clientDTO) {
-        return ResponseEntity.ok(clientService.editClient(phoneNumber, clientDTO));
+        return ResponseEntity.ok(adminService.editClient(phoneNumber, clientDTO));
     }
 }
