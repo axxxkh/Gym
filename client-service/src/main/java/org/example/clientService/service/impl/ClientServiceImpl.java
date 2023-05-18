@@ -6,7 +6,6 @@ import org.example.clientService.dto.ClientDTO;
 import org.example.clientService.dto.ClientLogsDTO;
 import org.example.clientService.entity.AccessLogs;
 import org.example.clientService.entity.Client;
-import org.example.clientService.exceptions.UserAlreadyExist;
 import org.example.clientService.exceptions.UserNotFound;
 import org.example.clientService.repository.AccessLogsRepository;
 import org.example.clientService.repository.ClientLogsRepository;
@@ -17,10 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor

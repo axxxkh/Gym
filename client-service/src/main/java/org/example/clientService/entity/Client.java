@@ -23,7 +23,7 @@ public class Client {
     private String name;
     @Column(name = "Surname", nullable = false)
     private String surname;
-    @NaturalId
+    @NaturalId(mutable = true)
     @Column(name = "phone_number", unique = true, length = 10, nullable = false)
     private String phoneNumber;
     @Column(name = "Birthdate", nullable = false)
