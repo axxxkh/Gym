@@ -37,13 +37,4 @@ public class ClientController {
 
         return ResponseEntity.ok(clientService.checkIn(clientDTO));
     }
-
-    @GetMapping("/period/")
-    public ResponseEntity<List<AccessLogsDTO>> getAccessLogByPeriod(@RequestHeader("phoneNumber") String phoneNumber,
-                                                                    @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-                                                                    @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) throws UserNotFound {
-
-        return ResponseEntity.ok(clientService.getAccessLogByPeriod(phoneNumber, startDate, endDate));
-    }
-
 }

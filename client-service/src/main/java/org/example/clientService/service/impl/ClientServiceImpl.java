@@ -92,13 +92,4 @@ public class ClientServiceImpl implements ClientService {
         LOGGER.info(infoMessage);
         return mapper.map(currentAccessSession, AccessLogsDTO.class);
     }
-
-    @Override
-    public List<AccessLogsDTO> getAccessLogByPeriod(String phoneNumber, LocalDate startDate, LocalDate endDate) throws UserNotFound {
-        Client clientDB = getClientFromDB(phoneNumber);
-        return accessLogsRepository.findByPeriod(startDate, endDate, clientDB.getId())
-                .stream()
-                .map(l -> mapper.map(l, AccessLogsDTO.class))
-                .collect(Collectors.toList());
-    }
 }

@@ -16,5 +16,4 @@ public interface ClientService {
     ClientDTO getByPhoneNumber(String phoneNumber);
     ClientLogsDTO getLog();
     AccessLogsDTO checkIn(ClientDTO clientDTO) throws UserNotFound;
-    List<AccessLogsDTO> getAccessLogByPeriod(String phoneNumber,LocalDate startDate, LocalDate endDate) throws UserNotFound;
 }
