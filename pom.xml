@@ -21,7 +21,7 @@
         <module>discovery</module>
         <module>gateway</module>
         <module>userAuthentication</module>
-        <module>client-service</module>
+        <module>admin-service</module>
     </modules>
 
     <properties>
